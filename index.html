@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get in Touch</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      color: #111;
+    }
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background: #fff;
+      padding: 32px;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0,0,0,.08);
+    }
+    h1 { margin: 0 0 8px; font-size: 26px; }
+    p { margin: 0 0 24px; color: #666; }
+    label {
+      display: block;
+      margin: 16px 0 7px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    input {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid #ddd;
+      border-radius: 9px;
+      font-size: 16px;
+      outline: none;
+    }
+    input:focus { border-color: #25D366; }
+    button {
+      width: 100%;
+      margin-top: 24px;
+      padding: 14px;
+      border: 0;
+      border-radius: 9px;
+      background: #25D366;
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    button:hover { background: #20bd5a; }
+    .error { color: #d00; font-size: 13px; margin-top: 8px; display: none; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Get in Touch</h1>
+    <p>Enter your details and continue on WhatsApp.</p>
+
+    <form id="leadForm">
+      <label for="name">Name</label>
+      <input id="name" name="name" type="text" placeholder="Your name" required>
+
+      <label for="company">Company Name</label>
+      <input id="company" name="company" type="text" placeholder="Your company name" required>
+
+      <div id="error" class="error"></div>
+      <button type="submit">Submit on WhatsApp</button>
+    </form>
+  </main>
+
+  <script>
+    const whatsappNumber = "919787605132";
+
+    document.getElementById("leadForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const company = document.getElementById("company").value.trim();
+      const error = document.getElementById("error");
+
+      if (!name || !company) {
+        error.textContent = "Please enter both your name and company name.";
+        error.style.display = "block";
+        return;
+      }
+
+      error.style.display = "none";
+
+      const message =
+        `Hi, I am ${name} from ${company}. I filled out the contact form.`;
+
+      const whatsappUrl =
+        `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+      window.location.href = whatsappUrl;
+    });
+  </script>
+</body>
+</html>
