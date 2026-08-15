@@ -230,9 +230,9 @@
 
       error.style.display = "none";
 
-      const message = \`Hi GetSetAI Team! I am \${name} from \${company}. I'm interested in learning more about WisdomChat.\`;
+      const message = `Hi GetSetAI Team! I am ${name} from ${company}. I'm interested in learning more about WisdomChat.`;
 
-      const whatsappUrl = \`https://wa.me/\${whatsappNumber}?text=\${encodeURIComponent(message)}\`;
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
       window.location.href = whatsappUrl;
     });
